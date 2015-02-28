@@ -51,26 +51,21 @@ $(document).ready(function(){
         success: function(user) {
              $("#login-page").hide();
               $("#main-container").show();
-           
+  				
+		 		 var query = new Parse.Query('TimeSlot');
+				query.find({
+			    success: function(results) {
+			       var status = "Found " + results.length ;
+			      alert(status);
+			    },
 
+			    error: function() {
 
-var query = new Parse.Query(Timeslot);
-query.equalTo("doctorId", "nANdix5YDm");
-query.find({
-  success: function(results) {
-    alert("Successfully retrieved " + results.length + " Doctors");
-    // Do something with the returned Parse.Object values
-    for (var i = 0; i < results.length; i++) { 
-      var object = results[i];
-      alert(object.id + ' - ' + object.get('doctorId'));
-    }
-  },
-  error: function(error) {
-    alert("Error: " + error.code + " " + error.message);
-  }
-});
-
-        },
+			      status = "No time slots found "; 
+			      alert(status);
+			    }
+			  });
+		},
         // If there is an error
         error: function(user, error) {
             console.log(error);
@@ -99,7 +94,7 @@ query.find({
  </div>
   <form class="doctor" action="" >
      <div  id="main-container">
-      <h2 class="form-signin-heading">Doctor's home page/h2>
+      <h2 class="form-signin-heading">Doctor's home page</h2>
      </div>
 </form>
  <!-- <div class="main-container" id="signin"></div>
