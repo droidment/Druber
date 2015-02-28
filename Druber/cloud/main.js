@@ -5,3 +5,5 @@ Parse.Cloud.define("hello", function(request, response) {
 	alert("hello from main");
   response.success("Hello world!");
 });
+
+// added comment - ravi
