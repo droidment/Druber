@@ -7,3 +7,15 @@ Parse.Cloud.define("hello", function(request, response) {
 });
 
 // added comment - ravi
+Parse.Cloud.define("getAllTimeSlots", function(request,response) {
+              var query = new Parse.Query(TimeSlot);
+			query.find({
+			  success: function(results) {
+				// results is an array of Parse.Object.
+			  },
+
+			  error: function(error) {
+				// error is an instance of Parse.Error.
+			  }
+        });
+});
