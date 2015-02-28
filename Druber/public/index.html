@@ -9,7 +9,7 @@
     <link href="../css/blog.css" rel="stylesheet">
       <link href="../js/login.js" rel="stylesheet">
     <link href="../css/todos.css" media="all" rel="stylesheet" type="text/css"/>
-    <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+    <script src="https://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
 
 </head>
 <body>
@@ -33,16 +33,15 @@
  Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
                    "NTqwrVOWAydzGtuGyvDMad6tIe7VSvQgFqcpFvNd");
 
-
+ 
 $(document).ready(function(){
-	 $("#main-container").hide();
+	$("#main-container").hide();
  
     $("form").submit(function(event){
         event.preventDefault();
        
     // Get data from the form and put them into variables
-    var 
-        username = document.getElementById("email").value,
+    var username = document.getElementById("email").value,
         password = document.getElementById("password").value;
 
     // Call Parse Login function with those variables
@@ -52,7 +51,11 @@ $(document).ready(function(){
              $("#login-page").hide();
               $("#main-container").show();
   				
+  				var user = new Parse.User();
+  				var objId = user.objectId;
 		 		 var query = new Parse.Query('TimeSlot');
+		 		 query.include(user);
+		 		 query.equalTo('user', user);
 				query.find({
 			    success: function(results) {
 			       var status = "Found " + results.length ;
@@ -60,7 +63,6 @@ $(document).ready(function(){
 			    },
 
 			    error: function() {
-
 			      status = "No time slots found "; 
 			      alert(status);
 			    }
@@ -69,6 +71,7 @@ $(document).ready(function(){
         // If there is an error
         error: function(user, error) {
             console.log(error);
+             alert("Incorrect user name or password");
         }
     });
 })
@@ -92,10 +95,12 @@ $(document).ready(function(){
         
     </form>
  </div>
-  <form class="doctor" action="" >
-     <div  id="main-container">
+  <div  id="main-container">
       <h2 class="form-signin-heading">Doctor's home page</h2>
      </div>
+  <form class="doctor" action="" >
+    
+
 </form>
  <!-- <div class="main-container" id="signin"></div>
     <form class="form-signin" action="" >

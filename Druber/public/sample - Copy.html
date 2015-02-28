@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title> Test Parse insert</title>
+      <meta charset="utf-8">
+    <title>Parse JavaScript Todo App</title>
+<!--     <link href="css/todos.css" media="all" rel="stylesheet" type="text/css"/> -->
+     <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+  
+     <script src="https://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+ Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
+                   "NTqwrVOWAydzGtuGyvDMad6tIe7VSvQgFqcpFvNd");
+ 
+
+ $(document).ready(function(){
+    alert("before");
+  var TimeSlot = Parse.Object.extend("TimeSlot");
+
+var timeSlot = new TimeSlot();
+ 
+
+ var fromDateTime = new Date(parseInt(2015),parseInt(4)-1,parseInt(1),11,0,0,0);
+ var toDateTime = new Date(parseInt(2015),parseInt(4)-1,parseInt(1),12,0,0,0);
+timeSlot.set("Status", "Closed");
+timeSlot.set("doctorId", "nANdix5YDm");
+timeSlot.set("fromDateTime", fromDateTime);
+timeSlot.set("toDateTime", toDateTime);
+timeSlot.save();
+alert("saved");
+ });
+
+
+</script>
+
+
+</body>
+</html>
