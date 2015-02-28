@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Druber": {
+            "applicationId": "8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S", 
+            "masterKey": "OR3EyJPK4YDWtjippUeQkQ7U05TbIx8oU6TLuN47"
+        }, 
+        "_default": {
+            "link": "Druber"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}
