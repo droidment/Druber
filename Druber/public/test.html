@@ -382,7 +382,7 @@ Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
 						endHour = parseInt(endHour) + 12;
 					}
 					
-					var selectedValueOfOption=$( "#appointmentType option:selected" ).text();
+					var selectedTextOfOption=$( "#appointmentType option:selected" ).text();
 
 					// Dates use integers
 					var startDateObj = new Date(parseInt(startYear),parseInt(startMonth)-1,parseInt(startDay),startHour,startMin,0,0);
@@ -396,7 +396,7 @@ Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
 						endDateObj,
 						false,
 						{
-							Status: selectedValueOfOption,
+							Status: selectedTextOfOption,
 							doctorId: "nANdix5YDm"
 						},
 						{
@@ -408,16 +408,13 @@ Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
 					$(this).dialog('close');
 //Make a call to Parse to Add this event
 						
-						  var TimeSlot = Parse.Object.extend("TimeSlot");
-						  var selectedValueOfOption=$( "#appointmentType" ).val();
-						  	alert(selectedValueOfOption);
-						  
+					  var TimeSlot = Parse.Object.extend("TimeSlot");
+						var selectedValueOfOption=$( "#appointmentType" ).val();
+						
 						alert("before");
 						var timeSlot = new TimeSlot();
 						 
 
-						 var fromDateTime = new Date(parseInt(2015),parseInt(4)-1,parseInt(1),11,0,0,0);
-						 var toDateTime = new Date(parseInt(2015),parseInt(4)-1,parseInt(1),12,0,0,0);
 						timeSlot.set("Status", selectedValueOfOption);
 						timeSlot.set("doctorId", "nANdix5YDm");
 						timeSlot.set("fromDateTime", startDateObj);
