@@ -382,43 +382,43 @@ Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
 						endHour = parseInt(endHour) + 12;
 					}
 					
-					//alert("Start time: " + startHour + ":" + startMin + " " + startMeridiem + ", End time: " + endHour + ":" + endMin + " " + endMeridiem);
+					var selectedValueOfOption=$( "#appointmentType option:selected" ).text();
 
 					// Dates use integers
 					var startDateObj = new Date(parseInt(startYear),parseInt(startMonth)-1,parseInt(startDay),startHour,startMin,0,0);
 					var endDateObj = new Date(parseInt(endYear),parseInt(endMonth)-1,parseInt(endDay),endHour,endMin,0,0);
 
 					// add new event to the calendar
-					// jfcalplugin.addAgendaItem(
-					// 	"#mycal",
-						
-					// 	startDateObj,
-					// 	endDateObj,
-					// 	false,
-					// 	{
-					// 		fname: "Dr. Deepak",
-					// 		lname: "Raghavan",
-					// 		leadReindeer: "Rudolph",
-					// 		myDate: new Date(),
-					// 		myNum: 42
-					// 	},
-					// 	{
-					// 		backgroundColor: $("#colorBackground").val(),
-					// 		foregroundColor: $("#colorForeground").val()
-					// 	}
-					// );
+					jfcalplugin.addAgendaItem(
+						"#mycal",
+						selectedValueOfOption,
+						startDateObj,
+						endDateObj,
+						false,
+						{
+							Status: selectedValueOfOption,
+							doctorId: "nANdix5YDm"
+						},
+						{
+							backgroundColor: $("#colorBackground").val(),
+							foregroundColor: $("#colorForeground").val()
+						}
+					);
 
 					$(this).dialog('close');
 //Make a call to Parse to Add this event
 						
 						  var TimeSlot = Parse.Object.extend("TimeSlot");
+						  var selectedValueOfOption=$( "#appointmentType" ).val();
+						  	alert(selectedValueOfOption);
+						  
 						alert("before");
 						var timeSlot = new TimeSlot();
 						 
 
 						 var fromDateTime = new Date(parseInt(2015),parseInt(4)-1,parseInt(1),11,0,0,0);
 						 var toDateTime = new Date(parseInt(2015),parseInt(4)-1,parseInt(1),12,0,0,0);
-						timeSlot.set("Status", "Closed");
+						timeSlot.set("Status", selectedValueOfOption);
 						timeSlot.set("doctorId", "nANdix5YDm");
 						timeSlot.set("fromDateTime", startDateObj);
 						timeSlot.set("toDateTime", endDateObj);
