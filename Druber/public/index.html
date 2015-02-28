@@ -12,6 +12,12 @@
         subscribe_key: 'sub-c-98da411c-bee9-11e4-aa95-0619f8945a4f'
     });
 
-</script>
 
+PUBNUB_demo.subscribe({
+    channel: 'dr_appt',
+    message: function(m){console.log(m)}
+});
+
+
+</script>
 Hello World
