@@ -49,8 +49,8 @@ $(document).ready(function(){
         // If the username and password matches
         success: function(user) {
              $("#login-page").hide();
-              $("#main-container").show();
-  				
+             // $("#main-container").show();
+  				document.location.href='test.html';
   				var user = new Parse.User();
   				var objId = user.objectId;
 		 		 var query = new Parse.Query('TimeSlot');
