@@ -87,6 +87,48 @@ Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
 		dragAndDropEnabled: true
 	}).data("plugin");
 	
+/*
+Get the data from parse for these TimeSlot objects
+*/
+
+	 var query = new Parse.Query('TimeSlot');
+		 		 // query.include(user);
+		 		 // query.equalTo('user', user);
+				query.find({
+			    success: function(results) {
+			       var status = "Found " + results.length ;
+			      alert(status);
+				
+				  for (var i = 0; i < results.length; i++) { 
+		      			var object = results[i];
+		     			// alert(object.id + ' - ' + object.get('fromDateTime'));
+
+					jfcalplugin.addAgendaItem(
+							"#mycal",
+							object.get('Status'),
+							object.get('fromDateTime'),
+							object.get('toDateTime'),
+							
+							false,
+							{
+								Status: object.get('Status'),
+								doctorId:object.get('doctorId')
+							},
+							{
+								backgroundColor: "#333333",
+								foregroundColor: "#FFFFFF"
+							}	
+							);
+					
+    					}
+			    },
+
+			    error: function() {
+			      status = "No time slots found "; 
+			      alert(status);
+			    }
+			  });
+
 	/**
 	 * Do something when dragging starts on agenda div
 	 */
