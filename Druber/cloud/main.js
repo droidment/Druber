@@ -48,4 +48,5 @@ Parse.Cloud.define("getValidTimeSlotsNearPatient", function(request,response) {
 				response.error(error);
 			  }
         });
+		
 });
