@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	 <meta http-equiv="refresh" content="300">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<title>jQuery Mobile: Customize Listview</title>
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
@@ -11,6 +12,11 @@
 <link rel="stylesheet" href="css/listView.css">
 </head>
 <body>
+
+ <style>
+	.Row p:nth-child(odd)		{ background-color:#eee; }
+.Row p:nth-child(even)		{ background-color:#fff; }
+  </style>
 
 	<script type="text/javascript">
  Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
@@ -25,6 +31,8 @@ $(document).ready(function(){
 	query.find({
     	success: function(results) {
        		appointments=results;
+       		// var p = $("<p>").appendTo('body');
+       		// p.append("<ul>");
    			var ul = $("<ul>").appendTo('body');
   			appointments.forEach(function(appt, i){
   				var provider = appt.get("provider");
@@ -46,16 +54,6 @@ $(document).ready(function(){
 	});
 
 });
-
-//$('#bookAppointment').on('click', listClick(this));
-  // $('#bookAppointment').on('click','a', function(event) {
-		// 		    console.log("You clicked on: ", event.target);
-		// 		        alert("You clicked on: ", event.target);
-		// 		}
-function book(event){	
-console.log(event.data.appointment.get("apptDate"));			
-      alert(event.data.appointment.get("apptDate"));
-}
 
 </script>
 <input type="hidden" id="stashObj"/>
