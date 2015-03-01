@@ -16,65 +16,49 @@
  Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
                    "NTqwrVOWAydzGtuGyvDMad6tIe7VSvQgFqcpFvNd");
  var appointments;
- 
+var appt;
 $(document).ready(function(){
-    var query = new Parse.Query('AppointmentRequest');
-		 		 // query.include(user);
-		 		 // query.equalTo('user', user);
-				query.find({
-			    success: function(results) {
-			       var status = "Found " + results.length ;
-			       appointments=results;
-			      
-			       var html="";
-			       for (var i=0;i<appointments.length;i++)
-			       {
-			     
-  document.write("<div id=\"users\"><ul class=\"listView\">");
-     
-     document.write("<h3 class=\"name\">")+document.write(appointments[i].get("serviceType"))+ document.write("</h3>");
-     document.write("<p class=\"born\">")+document.write(appointments[i].get("desiredFromAppointmentDate"))+document.write("</p></li>")
-      document.write("<p class=\"born\">")+document.write(appointments[i].get("desiredToAppointmentDate"))+document.write("</p></ul>");
-   
-// 			document.write("<div data-role='page' class='type-home'>");
-// 			document.write("<div data-role='header'>");
-// 			document.write("<h1>Appointment Requests</h1>");
-// 			document.write("</div>");
-//               document.write("<div data-role='content'>");
+	var body = $('body');
+    var query = new Parse.Query('Appointment');
+	query.include("provider");
+	 query.equalTo('status', 'Request');
+	query.find({
+    	success: function(results) {
+       		appointments=results;
+   			var ul = $("<ul>").appendTo('body');
+  			appointments.forEach(function(appt, i){
+  				var provider = appt.get("provider");
+  				 ul.append("<h3 class=\"name\">" + provider.get("displayName") + "</h3>");
+			    ul.append("<h3 class=\"name\">" + appt.get("status") + "</h3>");
+		   		ul.append("<h3 class=\"name\">" + appt.get("apptDate") + "</h3>");
+				var input = $("<input class=\"ui-btn-active bookAppointment\" type=\"submit\"/>").appendTo(ul);
+				input.on('click', function(){
 
-// document.write("<ul data-role='listview' data-inset=\"true\" data-theme=\"c\" data-dividertheme=\"a\">");
-		
-// 			document.write("<li data-role=\"list-divider\">")+appointments[i].get("serviceType")+document.write("</li>");
-				
-// 			document.write("<li>");
-// 				console.log(appointments[i].get("desiredToAppointmentDate"));
-// 			document.write("<h2>")+appointments[i].get("desiredToAppointmentDate")+document.write("</h2>");
-// 	console.log(appointments[i].get("desiredFromAppointmentDate"));
-// 			document.write("<p>")+appointments[i].get("desiredFromAppointmentDate")+document.write("</p> <p>")+
-// 			appointments[i].get("desiredToAppointmentDate")+document.write("</p>");
-// 				document.write("</li>");
-// document.write("</ul>");
-					
-// 				document.write(" </div>");
-// 			     document.write(" </div>");
-// 			     document.write(" </div>");
-               
-		 }
-               
-
-			     },
-
-			    error: function() {
+					appt.set("status", "Accepted");
+					appt.save();
+					location.reload();
+				});
+		 	});
+			//document.write("</ul>");
+		}, error: function() {
 			      status = "No time slots found "; 
-			      alert(status);
-			    }
-			  });
+		}
+	});
 
-			});
+});
 
+//$('#bookAppointment').on('click', listClick(this));
+  // $('#bookAppointment').on('click','a', function(event) {
+		// 		    console.log("You clicked on: ", event.target);
+		// 		        alert("You clicked on: ", event.target);
+		// 		}
+function book(event){	
+console.log(event.data.appointment.get("apptDate"));			
+      alert(event.data.appointment.get("apptDate"));
+}
 
 </script>
-
+<input type="hidden" id="stashObj"/>
  
 
 </body>
