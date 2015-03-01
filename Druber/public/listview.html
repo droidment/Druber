@@ -1,0 +1,82 @@
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<title>jQuery Mobile: Customize Listview</title>
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
+		 <script src="https://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+
+</head>
+<body>
+
+	<script id="results-template" type="text/x-handlebars-template"> 
+    <form>
+     <div id="htmlResults"></div>
+ 		<div data-role="page" class="type-home">
+			<div data-role="header"> 
+				<h1>Appointment Requests</h1> 
+			</div>
+                        <div data-role="content">
+
+                             <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+
+				<li data-role="list-divider">{{requestorId}}</li>
+				
+				<li>
+					<h2>{{serviceType}}</h2>
+					<p>{{desiredFromAppointmentDate}}</p> <p>{{desiredToAppointmentDate}}</p>
+					</li>
+				</ul>
+			     
+               </div>
+               </div>
+               </div>
+               </form>
+</script>
+	<script type="text/javascript">
+ Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
+                   "NTqwrVOWAydzGtuGyvDMad6tIe7VSvQgFqcpFvNd");
+ var appointments;
+
+$(document).ready(function(){
+    var query = new Parse.Query('AppointmentRequest');
+		 		 // query.include(user);
+		 		 // query.equalTo('user', user);
+				query.find({
+			    success: function(results) {
+			       var status = "Found " + results.length ;
+			       appointments=results;
+			       alert("above" +status);
+			       // The template code
+					var templateSource = document.getElementById('results-template').innerHTML;
+					 
+					// compile the template
+					var template = Handlebars.compile(templateSource);
+					 
+					// The div/container that we are going to display the results in
+					var resultsPlaceholder = document.getElementById('htmlResults');
+					 alert("ph" +resultsPlaceholder);
+					resultsPlaceholder.innerHTML = template(appointments);
+			     },
+
+			    error: function() {
+			      status = "No time slots found "; 
+			      alert(status);
+			    }
+			  });
+
+			});
+
+
+</script>
+
+ 
+<script type="text/javascript">
+
+  </script>
+</body>
+</html>
+
+ 

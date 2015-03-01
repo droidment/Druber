@@ -1,0 +1,83 @@
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<title>jQuery Mobile: Customize Listview</title>
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+		<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
+		 <script src="https://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+<link rel="stylesheet" href="css/listView.css">
+</head>
+<body>
+
+	<script type="text/javascript">
+ Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
+                   "NTqwrVOWAydzGtuGyvDMad6tIe7VSvQgFqcpFvNd");
+ var appointments;
+ 
+$(document).ready(function(){
+    var query = new Parse.Query('AppointmentRequest');
+		 		 // query.include(user);
+		 		 // query.equalTo('user', user);
+				query.find({
+			    success: function(results) {
+			       var status = "Found " + results.length ;
+			       appointments=results;
+			      
+			       var html="";
+			       for (var i=0;i<appointments.length;i++)
+			       {
+			     
+  document.write("<div id=\"users\"><ul class=\"listView\">");
+     
+     document.write("<h3 class=\"name\">")+document.write(appointments[i].get("serviceType"))+ document.write("</h3>");
+     document.write("<p class=\"born\">")+document.write(appointments[i].get("desiredFromAppointmentDate"))+document.write("</p></li>")
+      document.write("<p class=\"born\">")+document.write(appointments[i].get("desiredToAppointmentDate"))+document.write("</p></ul>");
+   
+// 			document.write("<div data-role='page' class='type-home'>");
+// 			document.write("<div data-role='header'>");
+// 			document.write("<h1>Appointment Requests</h1>");
+// 			document.write("</div>");
+//               document.write("<div data-role='content'>");
+
+// document.write("<ul data-role='listview' data-inset=\"true\" data-theme=\"c\" data-dividertheme=\"a\">");
+		
+// 			document.write("<li data-role=\"list-divider\">")+appointments[i].get("serviceType")+document.write("</li>");
+				
+// 			document.write("<li>");
+// 				console.log(appointments[i].get("desiredToAppointmentDate"));
+// 			document.write("<h2>")+appointments[i].get("desiredToAppointmentDate")+document.write("</h2>");
+// 	console.log(appointments[i].get("desiredFromAppointmentDate"));
+// 			document.write("<p>")+appointments[i].get("desiredFromAppointmentDate")+document.write("</p> <p>")+
+// 			appointments[i].get("desiredToAppointmentDate")+document.write("</p>");
+// 				document.write("</li>");
+// document.write("</ul>");
+					
+// 				document.write(" </div>");
+// 			     document.write(" </div>");
+// 			     document.write(" </div>");
+               
+		 }
+               
+
+			     },
+
+			    error: function() {
+			      status = "No time slots found "; 
+			      alert(status);
+			    }
+			  });
+
+			});
+
+
+</script>
+
+ 
+
+</body>
+</html>
+
+ 
