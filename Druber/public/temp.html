@@ -9,14 +9,13 @@
 
 		<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
 		 <script src="https://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="css/listView.css">
 </head>
 <body>
 
- <style>
-	.Row p:nth-child(odd)		{ background-color:#eee; }
-.Row p:nth-child(even)		{ background-color:#fff; }
-  </style>
+ 
 
 	<script type="text/javascript">
  Parse.initialize("8RaHv8d5OSF5yXWEQ1EUuEF8NNbNZg1ahXkiZk1S",
@@ -31,15 +30,22 @@ $(document).ready(function(){
 	query.find({
     	success: function(results) {
        		appointments=results;
-       		// var p = $("<p>").appendTo('body');
-       		// p.append("<ul>");
+       		
    			var ul = $("<ul>").appendTo('body');
+   			//var lph = $('listPlaceHolder');
+   		
   			appointments.forEach(function(appt, i){
+			
+  				//var ul = $("<ul>").appendTo('body');
+
   				var provider = appt.get("provider");
-  				 ul.append("<h3 class=\"name\">" + provider.get("displayName") + "</h3>");
-			    ul.append("<h3 class=\"name\">" + appt.get("status") + "</h3>");
-		   		ul.append("<h3 class=\"name\">" + appt.get("apptDate") + "</h3>");
-				var input = $("<input class=\"ui-btn-active bookAppointment\" type=\"submit\"/>").appendTo(ul);
+  				
+  				ul.append("<p>" + provider.get("displayName") + "</p>");
+			    ul.append("<p>" + appt.get("status") + "</p>");
+		   		ul.append("<p>" + appt.get("apptDate") + "</p>");
+				var input = $("<input  type=\"submit\"/>").appendTo(ul);
+
+			
 				input.on('click', function(){
 
 					appt.set("status", "Accepted");
@@ -56,9 +62,8 @@ $(document).ready(function(){
 });
 
 </script>
-<input type="hidden" id="stashObj"/>
- 
 
+<div id="listPlaceHolder"></div>
 </body>
 </html>
 

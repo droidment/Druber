@@ -50,21 +50,22 @@ $(document).ready(function(){
         success: function(user) {
              $("#login-page").hide();
              // $("#main-container").show();
-  				document.location.href='test.html';
+  			//	document.location.href='test.html';
   				var user = new Parse.User();
   				var objId = user.objectId;
 		 		 var query = new Parse.Query('TimeSlot');
-		 		 query.include(user);
-		 		 query.equalTo('user', user);
+		 		 query.include("doctorPointer");
+		 		 query.equalTo('doctorPointer', user.objectId);
 				query.find({
 			    success: function(results) {
 			       var status = "Found " + results.length ;
-			      alert(status);
+			     // alert(status);
+           document.location.href='test.html';
 			    },
 
 			    error: function() {
 			      status = "No time slots found "; 
-			      alert(status);
+			     // alert(status);
 			    }
 			  });
 		},

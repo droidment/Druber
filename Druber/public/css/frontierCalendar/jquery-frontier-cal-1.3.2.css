@@ -52,7 +52,8 @@ Style for day cells on the current month.
 */
 .JFrontierCal .JFrontierCal-Day-Cell,
 .JFrontierCal .JFrontierCal-Day-Cell-Last{
-	background-color: #efefef;
+	background-color: #efefef; 
+	 
 	color: #444444;	
 	background-image:url('images/dayCellCurrentMonth.png');
 	background-repeat:repeat-y;
@@ -100,7 +101,8 @@ Style for header cells (day name cells at top of calendar)
 	border-top: 0px solid #ffffff;
 	border-bottom: 0px solid #ffffff;
 	border-left: 0px solid #ffffff;
-	background-color: #777777;
+	/*background-color: #777777;*/
+	background-color: #0099ff;
 	color: white;
 	font: 13px verdana;
 	/*font-weight: bold;*/
@@ -125,7 +127,7 @@ Style for week Header cells (cells for day numbers above each week)
 	padding: 0px;
 	border-left: 0px solid #ffffff;
 	background-color: #dedede;
-	color: #000000;
+	color: #000099;
 	font: 13px verdana;
 	float: left;
 	clear: right;
@@ -138,7 +140,8 @@ Style for week header cells for the previous and next month. Make them a little 
 .JFrontierCal .JFrontierCal-PrevMonth-Week-Header-Cell,
 .JFrontierCal .JFrontierCal-NextMonth-Week-Header-Cell,
 .JFrontierCal .JFrontierCal-NextMonth-Week-Header-Cell-Last  {
-	background-color: #aaaaaa;
+	/*background-color: #aaaaaa;*/
+	background-color: #0099ff;
 	color: #333333;
 }
 /*
